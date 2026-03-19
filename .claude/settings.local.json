@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun create:*)",
+      "Bash(printf \"ESLint\\\\nNo\\\\n\")",
+      "Bash(pkill -f \"next-app\")",
+      "Bash(bunx --bun create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-bun --no-turbopack)",
+      "Bash(export CI=true)"
+    ]
+  }
+}
