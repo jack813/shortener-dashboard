@@ -23,6 +23,7 @@
     "passwordPlaceholder": "Enter password"
   },
   "Sidebar": {
+    "home": "Home",
     "dashboard": "Dashboard",
     "links": "Links",
     "api": "API",

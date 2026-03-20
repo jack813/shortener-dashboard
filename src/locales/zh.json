@@ -23,6 +23,7 @@
     "passwordPlaceholder": "请输入密码"
   },
   "Sidebar": {
+    "home": "首页",
     "dashboard": "仪表盘",
     "links": "链接管理",
     "api": "API",
