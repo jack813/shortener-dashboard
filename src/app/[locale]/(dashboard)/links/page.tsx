@@ -16,7 +16,7 @@ export default function LinksPage() {
         </h1>
         <Button className="gap-2">
           <Plus className="size-4" />
-          Create Link
+          {t("createLink")}
         </Button>
       </div>
 
@@ -26,26 +26,26 @@ export default function LinksPage() {
           <thead className="bg-slate-50 dark:bg-slate-800/50">
             <tr>
               <th className="px-4 py-3 text-left text-sm font-medium text-slate-500 dark:text-slate-400">
-                Short URL
+                {t("shortUrl")}
               </th>
               <th className="px-4 py-3 text-left text-sm font-medium text-slate-500 dark:text-slate-400">
-                Destination
+                {t("destination")}
               </th>
               <th className="px-4 py-3 text-left text-sm font-medium text-slate-500 dark:text-slate-400">
-                Clicks
+                {t("clicks")}
               </th>
               <th className="px-4 py-3 text-left text-sm font-medium text-slate-500 dark:text-slate-400">
-                Created
+                {t("created")}
               </th>
               <th className="px-4 py-3 text-right text-sm font-medium text-slate-500 dark:text-slate-400">
-                Actions
+                {t("actions")}
               </th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-t border-slate-200 dark:border-slate-800">
               <td className="px-4 py-8 text-center text-slate-500 dark:text-slate-400" colSpan={5}>
-                No links created yet. Click &quot;Create Link&quot; to add your first short link.
+                {t("noLinks")}
               </td>
             </tr>
           </tbody>

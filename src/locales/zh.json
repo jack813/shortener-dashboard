@@ -46,7 +46,14 @@
     "vsLastWeek": "较上周 +8.2%"
   },
   "Links": {
-    "title": "链接管理"
+    "title": "链接管理",
+    "createLink": "创建链接",
+    "shortUrl": "短链接",
+    "destination": "目标地址",
+    "clicks": "点击量",
+    "created": "创建时间",
+    "actions": "操作",
+    "noLinks": "暂无链接。点击「创建链接」添加您的第一个短链接。"
   },
   "API": {
     "title": "API 管理"

@@ -46,7 +46,14 @@
     "vsLastWeek": "+8.2% vs last week"
   },
   "Links": {
-    "title": "Links Management"
+    "title": "Links Management",
+    "createLink": "Create Link",
+    "shortUrl": "Short URL",
+    "destination": "Destination",
+    "clicks": "Clicks",
+    "created": "Created",
+    "actions": "Actions",
+    "noLinks": "No links created yet. Click \"Create Link\" to add your first short link."
   },
   "API": {
     "title": "API Management"
