@@ -1,0 +1,43 @@
+{
+  "Home": {
+    "title": "To get started, edit the page.tsx file.",
+    "description": "Looking for a starting point or more instructions? Head over to",
+    "templates": "Templates",
+    "learning": "Learning",
+    "center": "center.",
+    "deploy": "Deploy Now",
+    "documentation": "Documentation"
+  },
+  "Theme": {
+    "toggle": "Toggle theme"
+  },
+  "Language": {
+    "switch": "Switch language"
+  },
+  "Login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Sign In",
+    "usernamePlaceholder": "Enter username",
+    "passwordPlaceholder": "Enter password"
+  },
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "links": "Links",
+    "api": "API",
+    "logout": "Logout",
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome back"
+  },
+  "Links": {
+    "title": "Links Management"
+  },
+  "API": {
+    "title": "API Management"
+  }
+}

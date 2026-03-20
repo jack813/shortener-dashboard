@@ -1,0 +1,43 @@
+{
+  "Home": {
+    "title": "开始使用，请编辑 page.tsx 文件。",
+    "description": "寻找起点或更多说明？请前往",
+    "templates": "模板",
+    "learning": "学习",
+    "center": "中心。",
+    "deploy": "立即部署",
+    "documentation": "文档"
+  },
+  "Theme": {
+    "toggle": "切换主题"
+  },
+  "Language": {
+    "switch": "切换语言"
+  },
+  "Login": {
+    "title": "登录",
+    "username": "账号",
+    "password": "密码",
+    "submit": "登录",
+    "usernamePlaceholder": "请输入账号",
+    "passwordPlaceholder": "请输入密码"
+  },
+  "Sidebar": {
+    "dashboard": "仪表盘",
+    "links": "链接管理",
+    "api": "API",
+    "logout": "退出登录",
+    "collapse": "收起侧边栏",
+    "expand": "展开侧边栏"
+  },
+  "Dashboard": {
+    "title": "仪表盘",
+    "welcome": "欢迎回来"
+  },
+  "Links": {
+    "title": "链接管理"
+  },
+  "API": {
+    "title": "API 管理"
+  }
+}
