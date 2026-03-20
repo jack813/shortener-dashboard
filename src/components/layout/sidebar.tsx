@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter, Link } from "@/navigation";
 import { useAuth, SIDEBAR_COLLAPSED_KEY } from "@/components/auth/auth-provider";
@@ -34,15 +34,11 @@ export function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const { logout, username } = useAuth();
-  const [collapsed, setCollapsed] = useState(false);
-
-  // Read collapsed state from localStorage
-  useEffect(() => {
+  const [collapsed, setCollapsed] = useState(() => {
+    if (typeof window === "undefined") return false;
     const stored = localStorage.getItem(SIDEBAR_COLLAPSED_KEY);
-    if (stored !== null) {
-      setCollapsed(stored === "true");
-    }
-  }, []);
+    return stored === "true";
+  });
 
   const toggleCollapsed = () => {
     const newValue = !collapsed;
