@@ -6,7 +6,29 @@
       "Bash(pkill -f \"next-app\")",
       "Bash(bunx --bun create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-bun --no-turbopack)",
       "Bash(export CI=true)",
-      "Bash(bunx:*)"
+      "Bash(bunx:*)",
+      "Bash(bun run:*)",
+      "Bash(bun add:*)",
+      "Bash(rm /Users/jack/Documents/workspace/shortlink_cloudflare/shortener-dashboard/src/app/[locale]/not-found.tsx)",
+      "Bash(rm -rf /Users/jack/Documents/workspace/shortlink_cloudflare/shortener-dashboard/src/app/[locale])",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s http://localhost:3000/en)",
+      "Bash(curl -s http://localhost:3000/zh)",
+      "Bash(curl:*)",
+      "Bash(/Users/jack/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/scripts/start-server.sh --project-dir /Users/jack/Documents/workspace/shortlink_cloudflare/shortener-dashboard)",
+      "Bash(/Users/jack/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/skills/brainstorming/scripts/start-server.sh --project-dir /Users/jack/Documents/workspace/shortlink_cloudflare/shortener-dashboard)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git:*)",
+      "Bash(npx tsc:*)",
+      "Bash(ls -la /Users/jack/Documents/workspace/shortlink_cloudflare/shortener-dashboard/src/app/[locale]/)",
+      "Bash(ls:*)",
+      "Bash(git -C /Users/jack/Documents/workspace/shortlink_cloudflare/shortener-dashboard add \"src/app/[locale]/\\(dashboard\\)/api/page.tsx\")",
+      "Bash(/Users/jack/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/skills/brainstorming/scripts/stop-server.sh /Users/jack/Documents/workspace/shortlink_cloudflare/shortener-dashboard/.superpowers/brainstorm/617-1773935642)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_type",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_close"
     ]
   }
 }
