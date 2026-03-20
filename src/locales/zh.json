@@ -33,7 +33,17 @@
   },
   "Dashboard": {
     "title": "仪表盘",
-    "welcome": "欢迎回来"
+    "welcome": "欢迎回来",
+    "welcomeSubtitle": "以下是您的短链接数据概览。",
+    "totalLinks": "总链接数",
+    "totalClicks": "总点击量",
+    "clickRate": "点击率",
+    "avgResponse": "平均响应",
+    "recentLinks": "最近链接",
+    "noLinks": "暂无最近链接。",
+    "getStarted": "创建您的第一个短链接开始使用。",
+    "linksThisWeek": "本周 +12",
+    "vsLastWeek": "较上周 +8.2%"
   },
   "Links": {
     "title": "链接管理"

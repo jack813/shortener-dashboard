@@ -46,31 +46,31 @@ export default function DashboardPage() {
           {t("welcome")}, {username}!
         </h1>
         <p className="text-blue-100">
-          Here&apos;s an overview of your short links performance.
+          {t("welcomeSubtitle")}
         </p>
       </div>
 
       {/* Stat cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
-          title="Total Links"
+          title={t("totalLinks")}
           value="128"
           icon={<Link2 className="size-5" />}
-          trend="+12 this week"
+          trend={t("linksThisWeek")}
         />
         <StatCard
-          title="Total Clicks"
+          title={t("totalClicks")}
           value="4,521"
           icon={<MousePointer className="size-5" />}
-          trend="+8.2% vs last week"
+          trend={t("vsLastWeek")}
         />
         <StatCard
-          title="Click Rate"
+          title={t("clickRate")}
           value="3.2%"
           icon={<BarChart3 className="size-5" />}
         />
         <StatCard
-          title="Avg. Response"
+          title={t("avgResponse")}
           value="45ms"
           icon={<Clock className="size-5" />}
         />
@@ -80,12 +80,12 @@ export default function DashboardPage() {
       <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
         <div className="p-4 border-b border-slate-200 dark:border-slate-800">
           <h2 className="font-semibold text-slate-900 dark:text-white">
-            Recent Links
+            {t("recentLinks")}
           </h2>
         </div>
         <div className="p-8 text-center text-slate-500 dark:text-slate-400">
-          <p>No recent links to display.</p>
-          <p className="text-sm mt-1">Create your first short link to get started.</p>
+          <p>{t("noLinks")}</p>
+          <p className="text-sm mt-1">{t("getStarted")}</p>
         </div>
       </div>
     </div>

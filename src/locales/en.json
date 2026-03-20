@@ -33,7 +33,17 @@
   },
   "Dashboard": {
     "title": "Dashboard",
-    "welcome": "Welcome back"
+    "welcome": "Welcome back",
+    "welcomeSubtitle": "Here's an overview of your short links performance.",
+    "totalLinks": "Total Links",
+    "totalClicks": "Total Clicks",
+    "clickRate": "Click Rate",
+    "avgResponse": "Avg. Response",
+    "recentLinks": "Recent Links",
+    "noLinks": "No recent links to display.",
+    "getStarted": "Create your first short link to get started.",
+    "linksThisWeek": "+12 this week",
+    "vsLastWeek": "+8.2% vs last week"
   },
   "Links": {
     "title": "Links Management"
