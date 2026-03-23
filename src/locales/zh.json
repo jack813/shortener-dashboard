@@ -20,13 +20,14 @@
     "password": "密码",
     "submit": "登录",
     "usernamePlaceholder": "请输入账号",
-    "passwordPlaceholder": "请输入密码"
+    "passwordPlaceholder": "请输入密码",
+    "loginWithGithub": "使用 GitHub 登录"
   },
   "Sidebar": {
     "home": "首页",
     "dashboard": "仪表盘",
     "links": "链接管理",
-    "api": "API",
+    "api": "API Keys",
     "logout": "退出登录",
     "collapse": "收起侧边栏",
     "expand": "展开侧边栏"
@@ -36,14 +37,32 @@
     "welcome": "欢迎回来",
     "welcomeSubtitle": "以下是您的短链接数据概览。",
     "totalLinks": "总链接数",
+    "customLinks": "自定义链接",
+    "permanentLinks": "永久链接",
     "totalClicks": "总点击量",
     "clickRate": "点击率",
     "avgResponse": "平均响应",
-    "recentLinks": "最近链接",
+    "recentLinks": "最近创建的链接",
     "noLinks": "暂无最近链接。",
     "getStarted": "创建您的第一个短链接开始使用。",
     "linksThisWeek": "本周 +12",
-    "vsLastWeek": "较上周 +8.2%"
+    "vsLastWeek": "较上周 +8.2%",
+    "quotaUsage": "配额使用情况",
+    "monthlyLinks": "月度链接",
+    "quickActions": "快速操作",
+    "createShortLink": "创建短链接",
+    "quickGenerate": "快速生成短链接",
+    "manageLinks": "管理链接",
+    "viewAllLinks": "查看所有链接",
+    "manageApiKeys": "管理 API 密钥",
+    "viewAll": "查看全部",
+    "freePlan": "免费版",
+    "proPlan": "专业版",
+    "available": "可用",
+    "thisMonth": "本月",
+    "clicks": "次点击",
+    "copy": "复制",
+    "open": "打开链接"
   },
   "Links": {
     "title": "链接管理",
@@ -53,9 +72,167 @@
     "clicks": "点击量",
     "created": "创建时间",
     "actions": "操作",
-    "noLinks": "暂无链接。点击「创建链接」添加您的第一个短链接。"
+    "noLinks": "暂无链接。点击「创建链接」添加您的第一个短链接。",
+    "loading": "加载中...",
+    "search": "搜索...",
+    "filter": {
+      "allTypes": "全部类型",
+      "custom": "自定义",
+      "permanent": "永久",
+      "standard": "普通",
+      "allApiKeys": "全部 API Key",
+      "noApiKey": "无 API Key"
+    },
+    "type": {
+      "custom": "自定义",
+      "permanent": "永久",
+      "standard": "普通"
+    },
+    "status": {
+      "active": "正常",
+      "revoked": "已吊销"
+    },
+    "table": {
+      "code": "短链 Code",
+      "url": "目标 URL",
+      "type": "类型",
+      "status": "状态",
+      "clicks": "点击数",
+      "createdAt": "创建时间",
+      "actions": "操作",
+      "loading": "加载中...",
+      "empty": "暂无短链接"
+    },
+    "pagination": {
+      "previous": "上一页",
+      "next": "下一页"
+    },
+    "confirm": {
+      "delete": "确定要删除短链接 \"{{code}}\" 吗？此操作不可恢复！"
+    },
+    "stats": {
+      "title": "访问统计",
+      "totalClicks": "总点击数",
+      "topCountries": "访问国家/地区",
+      "topCities": "访问城市",
+      "deviceBreakdown": "设备分布",
+      "recentLogs": "最近访问",
+      "loadFailed": "加载统计数据失败",
+      "networkError": "网络错误",
+      "noData": "暂无数据"
+    },
+    "qr": {
+      "title": "二维码",
+      "size": "尺寸",
+      "format": "格式",
+      "download": "下载",
+      "darkColor": "前景色",
+      "lightColor": "背景色"
+    },
+    "modal": {
+      "createTitle": "创建短链接",
+      "editTitle": "编辑链接"
+    },
+    "form": {
+      "targetUrl": "目标 URL",
+      "urlPlaceholder": "https://example.com",
+      "customCode": "自定义 Code (可选)",
+      "codePlaceholder": "mycode",
+      "codeHint": "3-32 字符，仅限小写字母、数字、连字符、下划线",
+      "expireDays": "有效期 (天)",
+      "permanent": "永久链接 (不过期)",
+      "thisMonth": "本月",
+      "available": "可用"
+    },
+    "result": {
+      "yourLink": "您的短链接:",
+      "qrCode": "二维码:",
+      "downloadQr": "下载二维码",
+      "createAnother": "再创建一个"
+    },
+    "button": {
+      "cancel": "取消",
+      "create": "创建",
+      "save": "保存",
+      "edit": "编辑",
+      "delete": "删除",
+      "stats": "统计",
+      "qr": "二维码"
+    },
+    "toast": {
+      "success": "创建成功！",
+      "copied": "已复制到剪贴板!",
+      "deleteSuccess": "删除成功",
+      "updateSuccess": "更新成功",
+      "error": "操作失败"
+    }
   },
   "API": {
-    "title": "API 管理"
+    "title": "API Keys",
+    "createButton": "创建 API Key",
+    "table": {
+      "name": "名称",
+      "key": "Key",
+      "status": "状态",
+      "links": "链接数",
+      "created": "创建时间",
+      "actions": "操作",
+      "loading": "加载中...",
+      "noKeys": "暂无 API Key，点击上方按钮创建",
+      "loadFailed": "加载失败"
+    },
+    "status": {
+      "active": "活跃",
+      "revoked": "已吊销"
+    },
+    "modal": {
+      "createTitle": "创建 API Key",
+      "renameTitle": "重命名 API Key",
+      "revokeTitle": "确认吊销 API Key",
+      "copyTitle": "请复制您的 API Key"
+    },
+    "form": {
+      "nameLabel": "名称",
+      "newNameLabel": "新名称"
+    },
+    "warning": {
+      "importantHint": "重要提示：",
+      "keyWarning": "此密钥只会显示一次！请务必备份保存。如果丢失，只能重新创建新的密钥。",
+      "revokeWarning": "此操作不可恢复！所有使用该 API Key 创建的短链接将失效。",
+      "revokeConfirmLabel": "请输入 \"revoke\" 确认"
+    },
+    "button": {
+      "create": "创建",
+      "cancel": "取消",
+      "save": "保存",
+      "rename": "重命名",
+      "revoke": "吊销",
+      "confirmRevoke": "确认吊销",
+      "copyToClipboard": "复制到剪贴板",
+      "gotIt": "我知道了"
+    },
+    "toast": {
+      "createSuccess": "创建成功",
+      "createFailed": "创建失败",
+      "renameSuccess": "重命名成功",
+      "renameFailed": "重命名失败",
+      "revokeSuccess": "API Key 已吊销",
+      "revokeFailed": "吊销失败",
+      "copied": "已复制到剪贴板",
+      "enterRevoke": "请输入 \"revoke\" 确认"
+    }
+  },
+  "Common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "copy": "复制",
+    "download": "下载",
+    "view": "查看",
+    "close": "关闭"
   }
 }

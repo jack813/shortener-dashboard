@@ -20,13 +20,14 @@
     "password": "Password",
     "submit": "Sign In",
     "usernamePlaceholder": "Enter username",
-    "passwordPlaceholder": "Enter password"
+    "passwordPlaceholder": "Enter password",
+    "loginWithGithub": "Login with GitHub"
   },
   "Sidebar": {
     "home": "Home",
     "dashboard": "Dashboard",
     "links": "Links",
-    "api": "API",
+    "api": "API Keys",
     "logout": "Logout",
     "collapse": "Collapse sidebar",
     "expand": "Expand sidebar"
@@ -36,26 +37,202 @@
     "welcome": "Welcome back",
     "welcomeSubtitle": "Here's an overview of your short links performance.",
     "totalLinks": "Total Links",
+    "customLinks": "Custom Links",
+    "permanentLinks": "Permanent Links",
     "totalClicks": "Total Clicks",
     "clickRate": "Click Rate",
     "avgResponse": "Avg. Response",
-    "recentLinks": "Recent Links",
-    "noLinks": "No recent links to display.",
+    "recentLinks": "Recently Created Links",
+    "noLinks": "No links yet.",
     "getStarted": "Create your first short link to get started.",
     "linksThisWeek": "+12 this week",
-    "vsLastWeek": "+8.2% vs last week"
+    "vsLastWeek": "+8.2% vs last week",
+    "quotaUsage": "Quota Usage",
+    "monthlyLinks": "Monthly Links",
+    "quickActions": "Quick Actions",
+    "createShortLink": "Create Short Link",
+    "quickGenerate": "Quickly generate short link",
+    "manageLinks": "Manage Links",
+    "viewAllLinks": "View all links",
+    "manageApiKeys": "Manage API Keys",
+    "viewAll": "View All",
+    "freePlan": "Free Plan",
+    "proPlan": "Pro Plan",
+    "available": "Available",
+    "thisMonth": "This Month",
+    "clicks": "clicks",
+    "copy": "Copy",
+    "open": "Open link"
   },
   "Links": {
     "title": "Links Management",
     "createLink": "Create Link",
     "shortUrl": "Short URL",
-    "destination": "Destination",
+    "destination": "Target URL",
     "clicks": "Clicks",
     "created": "Created",
     "actions": "Actions",
-    "noLinks": "No links created yet. Click \"Create Link\" to add your first short link."
+    "noLinks": "No links created yet. Click \"Create Link\" to add your first short link.",
+    "loading": "Loading...",
+    "search": "Search...",
+    "filter": {
+      "allTypes": "All Types",
+      "custom": "Custom",
+      "permanent": "Permanent",
+      "standard": "Standard",
+      "allApiKeys": "All API Keys",
+      "noApiKey": "No API Key"
+    },
+    "type": {
+      "custom": "Custom",
+      "permanent": "Permanent",
+      "standard": "Standard"
+    },
+    "status": {
+      "active": "Active",
+      "revoked": "Revoked"
+    },
+    "table": {
+      "code": "Code",
+      "url": "Target URL",
+      "type": "Type",
+      "status": "Status",
+      "clicks": "Clicks",
+      "createdAt": "Created",
+      "actions": "Actions",
+      "loading": "Loading...",
+      "empty": "No links found"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "confirm": {
+      "delete": "Are you sure you want to delete the short link \"{{code}}\"? This cannot be undone!"
+    },
+    "stats": {
+      "title": "Statistics",
+      "totalClicks": "Total Clicks",
+      "topCountries": "Top Countries",
+      "topCities": "Top Cities",
+      "deviceBreakdown": "Device Breakdown",
+      "recentLogs": "Recent Activity",
+      "loadFailed": "Failed to load statistics",
+      "networkError": "Network error",
+      "noData": "No data available"
+    },
+    "qr": {
+      "title": "QR Code",
+      "size": "Size",
+      "format": "Format",
+      "download": "Download",
+      "darkColor": "Foreground",
+      "lightColor": "Background"
+    },
+    "modal": {
+      "createTitle": "Create Short Link",
+      "editTitle": "Edit Link"
+    },
+    "form": {
+      "targetUrl": "Target URL",
+      "urlPlaceholder": "https://example.com",
+      "customCode": "Custom Code (Optional)",
+      "codePlaceholder": "mycode",
+      "codeHint": "3-32 chars, lowercase letters, numbers, hyphens, underscores only",
+      "expireDays": "Expiration (Days)",
+      "permanent": "Permanent Link (Never Expires)",
+      "thisMonth": "This Month",
+      "available": "Available"
+    },
+    "result": {
+      "yourLink": "Your short link:",
+      "qrCode": "QR Code:",
+      "downloadQr": "Download QR",
+      "createAnother": "Create Another"
+    },
+    "button": {
+      "cancel": "Cancel",
+      "create": "Create",
+      "save": "Save",
+      "edit": "Edit",
+      "delete": "Delete",
+      "stats": "Statistics",
+      "qr": "QR Code"
+    },
+    "toast": {
+      "success": "Created successfully!",
+      "copied": "Copied to clipboard!",
+      "deleteSuccess": "Deleted successfully",
+      "updateSuccess": "Updated successfully",
+      "error": "Operation failed"
+    }
   },
   "API": {
-    "title": "API Management"
+    "title": "API Keys",
+    "createButton": "Create API Key",
+    "table": {
+      "name": "Name",
+      "key": "Key",
+      "status": "Status",
+      "links": "Links",
+      "created": "Created",
+      "actions": "Actions",
+      "loading": "Loading...",
+      "noKeys": "No API Keys yet. Click the button above to create one.",
+      "loadFailed": "Failed to load"
+    },
+    "status": {
+      "active": "Active",
+      "revoked": "Revoked"
+    },
+    "modal": {
+      "createTitle": "Create API Key",
+      "renameTitle": "Rename API Key",
+      "revokeTitle": "Revoke API Key",
+      "copyTitle": "Please Copy Your API Key"
+    },
+    "form": {
+      "nameLabel": "Name",
+      "newNameLabel": "New Name"
+    },
+    "warning": {
+      "importantHint": "Important: ",
+      "keyWarning": "This key will only be shown once! Please save it securely. If lost, you can only create a new key.",
+      "revokeWarning": "This action cannot be undone! All short links created with this API Key will become invalid.",
+      "revokeConfirmLabel": "Please type \"revoke\" to confirm"
+    },
+    "button": {
+      "create": "Create",
+      "cancel": "Cancel",
+      "save": "Save",
+      "rename": "Rename",
+      "revoke": "Revoke",
+      "confirmRevoke": "Confirm Revoke",
+      "copyToClipboard": "Copy to Clipboard",
+      "gotIt": "Got It"
+    },
+    "toast": {
+      "createSuccess": "Created successfully",
+      "createFailed": "Failed to create",
+      "renameSuccess": "Renamed successfully",
+      "renameFailed": "Failed to rename",
+      "revokeSuccess": "API Key revoked",
+      "revokeFailed": "Failed to revoke",
+      "copied": "Copied to clipboard",
+      "enterRevoke": "Please type \"revoke\" to confirm"
+    }
+  },
+  "Common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "copy": "Copy",
+    "download": "Download",
+    "view": "View",
+    "close": "Close"
   }
 }
