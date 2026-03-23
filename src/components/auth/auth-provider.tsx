@@ -2,73 +2,131 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from "react";
 
+interface User {
+  id: string;
+  name: string;
+  email?: string;
+  avatar?: string;
+}
+
 interface AuthState {
   isLoggedIn: boolean;
-  username: string | null;
+  user: User | null;
 }
 
 interface AuthContextType {
   isLoggedIn: boolean;
+  user: User | null;
   username: string | null;
   isLoading: boolean;
-  login: (username: string, password: string) => boolean;
+  login: () => void;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const AUTH_STORAGE_KEY = "shortener-auth";
-const SIDEBAR_COLLAPSED_KEY = "sidebar-collapsed";
+const AUTH_STORAGE_KEY = "shortener-auth-user";
 
-function getStoredAuth(): AuthState {
-  if (typeof window === "undefined") {
-    return { isLoggedIn: false, username: null };
-  }
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://shortener.0x1.in";
+const OAUTH_URL = process.env.NEXT_PUBLIC_OAUTH_URL || "https://shortener.0x1.in/auth/github";
+const LOGOUT_URL = "https://shortener.0x1.in/logout";
+
+/**
+ * Get stored user from localStorage
+ */
+function getStoredUser(): User | null {
+  if (typeof window === "undefined") return null;
   const stored = localStorage.getItem(AUTH_STORAGE_KEY);
   if (stored) {
     try {
-      const data = JSON.parse(stored);
-      if (data.isLoggedIn && data.username) {
-        return { isLoggedIn: true, username: data.username };
-      }
+      return JSON.parse(stored);
     } catch {
-      // ignore parse errors
+      return null;
     }
   }
-  return { isLoggedIn: false, username: null };
+  return null;
+}
+
+/**
+ * Store user in localStorage
+ */
+function storeUser(user: User | null) {
+  if (typeof window === "undefined") return;
+  if (user) {
+    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(user));
+  } else {
+    localStorage.removeItem(AUTH_STORAGE_KEY);
+  }
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [authState, setAuthState] = useState<AuthState>({ isLoggedIn: false, username: null });
+  const [authState, setAuthState] = useState<AuthState>({
+    isLoggedIn: false,
+    user: null,
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // 读取 localStorage 中的登录状态
-    const storedAuth = getStoredAuth();
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Necessary for reading localStorage after hydration in Next.js
-    setAuthState(storedAuth);
-    setIsLoading(false);
+    const checkAuth = async () => {
+      // Even if we can't read HttpOnly cookie via JS, browser will send it with credentials: 'include'
+      // So we always try to verify with the API
+      try {
+        // Verify session with API - browser automatically sends HttpOnly session cookie
+        const response = await fetch(`${API_URL}/api/me`, {
+          credentials: "include",
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const userData = data.user;
+          const user: User = {
+            id: userData.id,
+            name: userData.name || userData.login || "User",
+            email: userData.email,
+            avatar: userData.avatar,
+          };
+          setAuthState({ isLoggedIn: true, user });
+          storeUser(user);
+        } else {
+          // Session invalid
+          setAuthState({ isLoggedIn: false, user: null });
+          storeUser(null);
+        }
+      } catch {
+        // Network error, check cached user
+        const cachedUser = getStoredUser();
+        if (cachedUser) {
+          setAuthState({ isLoggedIn: true, user: cachedUser });
+        } else {
+          setAuthState({ isLoggedIn: false, user: null });
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAuth();
   }, []);
 
-  const login = useCallback((user: string, password: string) => {
-    // password parameter kept for interface compatibility, validation not implemented in demo
-    void password;
-    const data = { isLoggedIn: true, username: user };
-    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(data));
-    setAuthState({ isLoggedIn: true, username: user });
-    return true;
+  const login = useCallback(() => {
+    // Redirect to OAuth
+    window.location.href = OAUTH_URL;
   }, []);
 
   const logout = useCallback(() => {
-    localStorage.removeItem(AUTH_STORAGE_KEY);
-    setAuthState({ isLoggedIn: false, username: null });
+    // Clear local state
+    storeUser(null);
+    setAuthState({ isLoggedIn: false, user: null });
+    // Redirect to server-side logout to clear HttpOnly cookie
+    window.location.href = LOGOUT_URL;
   }, []);
 
   return (
     <AuthContext.Provider
       value={{
         isLoggedIn: authState.isLoggedIn,
-        username: authState.username,
+        user: authState.user,
+        username: authState.user?.name || null,
         isLoading,
         login,
         logout,
@@ -86,5 +144,3 @@ export function useAuth() {
   }
   return context;
 }
-
-export { SIDEBAR_COLLAPSED_KEY };
