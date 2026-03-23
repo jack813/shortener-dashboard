@@ -9,9 +9,10 @@ export function Header() {
   const t = useTranslations("Sidebar");
   const pathname = usePathname();
 
-  // Extract current page name from path: /[locale]/[page]
+  // pathname from next-intl doesn't include locale prefix
+  // e.g., "/en/links" -> "/links"
   const segments = pathname.split("/").filter(Boolean);
-  const currentPage = segments[1] || "dashboard";
+  const currentPage = segments[0] || "dashboard";
   const translatedTitle = t(currentPage as "dashboard" | "links" | "api");
 
   return (
