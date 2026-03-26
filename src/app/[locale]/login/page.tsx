@@ -1,27 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect } from "react";
+import { useLocale } from "next-intl";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/navigation";
 import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
 import { LanguageToggle } from "@/components/language-toggle";
-import { LogIn } from "lucide-react";
+import { Github } from "lucide-react";
 
 export default function LoginPage() {
   const t = useTranslations("Login");
+  const { isLoggedIn, isLoading, login } = useAuth();
   const router = useRouter();
-  const { login } = useAuth();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const locale = useLocale();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (username.trim()) {
-      login(username.trim(), password);
-      router.replace("/dashboard");
+  // Redirect to dashboard if already logged in
+  useEffect(() => {
+    if (!isLoading && isLoggedIn) {
+      router.replace(`/${locale}/dashboard`);
     }
+  }, [isLoading, isLoggedIn, router, locale]);
+
+  const handleGithubLogin = () => {
+    login();
   };
+
+  // Show loading while checking auth
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="text-white">Loading...</div>
+      </div>
+    );
+  }
+
+  // Don't render login form if already logged in
+  if (isLoggedIn) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
@@ -43,42 +60,14 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1.5">
-                {t("username")}
-              </label>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder={t("usernamePlaceholder")}
-                className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1.5">
-                {t("password")}
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder={t("passwordPlaceholder")}
-                className="w-full px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent transition-all"
-              />
-            </div>
-
-            <Button
-              type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors flex items-center justify-center gap-2"
-            >
-              <LogIn className="size-4" />
-              {t("submit")}
-            </Button>
-          </form>
+          {/* GitHub Login Button */}
+          <Button
+            onClick={handleGithubLogin}
+            className="w-full bg-white hover:bg-slate-100 text-slate-900 font-medium py-6 rounded-lg transition-colors flex items-center justify-center gap-3"
+          >
+            <Github className="size-5" />
+            {t("loginWithGithub")}
+          </Button>
 
           {/* Language toggle */}
           <div className="mt-6 flex justify-center">

@@ -62,7 +62,12 @@
     "thisMonth": "本月",
     "clicks": "次点击",
     "copy": "复制",
-    "open": "打开链接"
+    "open": "打开链接",
+    "trafficTitle": "本月流量",
+    "trafficUnit": "次访问",
+    "trafficRemaining": "剩余",
+    "trafficReset": "重置",
+    "viewDetails": "查看详情"
   },
   "Links": {
     "title": "链接管理",
@@ -98,6 +103,7 @@
       "type": "类型",
       "status": "状态",
       "clicks": "点击数",
+      "traffic": "流量",
       "createdAt": "创建时间",
       "actions": "操作",
       "loading": "加载中...",

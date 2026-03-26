@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import { AuthProvider } from "@/components/auth/auth-provider";
 
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "zh" }];
@@ -23,7 +24,9 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
-      {children}
+      <AuthProvider>
+        {children}
+      </AuthProvider>
     </NextIntlClientProvider>
   );
 }

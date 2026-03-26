@@ -1,74 +1,127 @@
 "use client";
 
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
+import { Plus } from "lucide-react";
+import { useApiKeys, ApiKey, CreateApiKeyResponse } from "@/lib/api/use-api-keys";
+import { ApiKeysTable } from "@/components/api-keys/api-keys-table";
+import { CreateApiKeyDialog } from "@/components/api-keys/create-api-key-dialog";
+import { RenameApiKeyDialog } from "@/components/api-keys/rename-api-key-dialog";
+import { RevokeApiKeyDialog } from "@/components/api-keys/revoke-api-key-dialog";
 import { Button } from "@/components/ui/button";
-import { Copy, RefreshCw, Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { toast } from "sonner";
 
 export default function APIPage() {
   const t = useTranslations("API");
-  const [showKey, setShowKey] = useState(false);
+  const { keys, loading, createKey, renameKey, revokeKey } = useApiKeys();
 
-  // Demo API key
-  const apiKey = "sk_test_placeholder";
+  // Dialog states
+  const [createOpen, setCreateOpen] = useState(false);
+  const [renameOpen, setRenameOpen] = useState(false);
+  const [revokeOpen, setRevokeOpen] = useState(false);
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(apiKey);
-  };
+  // Selected items
+  const [renameKeyData, setRenameKeyData] = useState<ApiKey | null>(null);
+  const [revokeKeyData, setRevokeKeyData] = useState<ApiKey | null>(null);
+  const [createResult, setCreateResult] = useState<CreateApiKeyResponse | null>(null);
+
+  // Handlers
+  const handleCreate = useCallback(
+    async (name: string): Promise<CreateApiKeyResponse | null> => {
+      try {
+        const result = await createKey(name);
+        setCreateResult(result);
+        toast.success(t("toast.createSuccess"));
+        return result;
+      } catch (err) {
+        toast.error(err instanceof Error ? err.message : t("toast.createFailed"));
+        return null;
+      }
+    },
+    [createKey, t]
+  );
+
+  const handleRename = useCallback(
+    async (id: string, name: string): Promise<boolean> => {
+      try {
+        await renameKey(id, name);
+        toast.success(t("toast.renameSuccess"));
+        return true;
+      } catch (err) {
+        toast.error(err instanceof Error ? err.message : t("toast.renameFailed"));
+        return false;
+      }
+    },
+    [renameKey, t]
+  );
+
+  const handleRevoke = useCallback(
+    async (id: string): Promise<boolean> => {
+      try {
+        await revokeKey(id);
+        toast.success(t("toast.revokeSuccess"));
+        return true;
+      } catch (err) {
+        toast.error(err instanceof Error ? err.message : t("toast.revokeFailed"));
+        return false;
+      }
+    },
+    [revokeKey, t]
+  );
+
+  const openRenameDialog = useCallback((key: ApiKey) => {
+    setRenameKeyData(key);
+    setRenameOpen(true);
+  }, []);
+
+  const openRevokeDialog = useCallback((key: ApiKey) => {
+    setRevokeKeyData(key);
+    setRevokeOpen(true);
+  }, []);
 
   return (
     <div className="space-y-6">
-      {/* Page title */}
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
-        {t("title")}
-      </h1>
-
-      {/* API Key card */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
-        <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-          API Key
-        </h2>
-        <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
-          Use this key to authenticate API requests. Keep it secure and never share it publicly.
-        </p>
-
-        <div className="flex items-center gap-2">
-          <div className="flex-1 flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-lg px-4 py-2.5">
-            <code className="flex-1 text-sm font-mono text-slate-700 dark:text-slate-300 truncate">
-              {showKey ? apiKey : "••••••••••••••••••••••••••••••••"}
-            </code>
-            <Button
-              variant="ghost"
-              size="icon-xs"
-              onClick={() => setShowKey(!showKey)}
-              title={showKey ? "Hide" : "Show"}
-            >
-              {showKey ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-            </Button>
-          </div>
-          <Button variant="outline" size="icon" onClick={copyToClipboard} title="Copy">
-            <Copy className="size-4" />
-          </Button>
-          <Button variant="outline" size="icon" title="Regenerate">
-            <RefreshCw className="size-4" />
-          </Button>
-        </div>
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+          {t("title")}
+        </h1>
+        <Button onClick={() => setCreateOpen(true)}>
+          <Plus className="size-4 mr-2" />
+          {t("createButton")}
+        </Button>
       </div>
 
-      {/* Usage example */}
-      <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
-        <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
-          Usage
-        </h2>
-        <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
-          <pre className="text-sm text-slate-100">
-{`curl -X POST https://api.0x1.in/v1/links \\
-  -H "Authorization: Bearer ${apiKey}" \\
-  -H "Content-Type: application/json" \\
-  -d '{"url": "https://example.com"}'`}
-          </pre>
-        </div>
-      </div>
+      {/* Table */}
+      <ApiKeysTable
+        keys={keys}
+        loading={loading}
+        onRename={openRenameDialog}
+        onRevoke={openRevokeDialog}
+      />
+
+      {/* Dialogs */}
+      <CreateApiKeyDialog
+        open={createOpen}
+        onOpenChange={setCreateOpen}
+        onSubmit={handleCreate}
+        result={createResult}
+        onReset={() => setCreateResult(null)}
+      />
+
+      <RenameApiKeyDialog
+        open={renameOpen}
+        onOpenChange={setRenameOpen}
+        apiKey={renameKeyData}
+        onSubmit={handleRename}
+      />
+
+      <RevokeApiKeyDialog
+        open={revokeOpen}
+        onOpenChange={setRevokeOpen}
+        apiKey={revokeKeyData}
+        onSubmit={handleRevoke}
+      />
     </div>
   );
 }

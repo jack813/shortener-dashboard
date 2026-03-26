@@ -62,7 +62,12 @@
     "thisMonth": "This Month",
     "clicks": "clicks",
     "copy": "Copy",
-    "open": "Open link"
+    "open": "Open link",
+    "trafficTitle": "Monthly Traffic",
+    "trafficUnit": "visits",
+    "trafficRemaining": "Remaining",
+    "trafficReset": "Reset",
+    "viewDetails": "View Details"
   },
   "Links": {
     "title": "Links Management",
@@ -98,6 +103,7 @@
       "type": "Type",
       "status": "Status",
       "clicks": "Clicks",
+      "traffic": "Traffic",
       "createdAt": "Created",
       "actions": "Actions",
       "loading": "Loading...",

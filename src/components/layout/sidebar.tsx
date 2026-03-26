@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter, Link } from "@/navigation";
-import { useAuth, SIDEBAR_COLLAPSED_KEY } from "@/components/auth/auth-provider";
+import { useAuth } from "@/components/auth/auth-provider";
 import { Button } from "@/components/ui/button";
 import {
   LayoutDashboard,
@@ -14,6 +14,8 @@ import {
   PanelLeft,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const SIDEBAR_COLLAPSED_KEY = "sidebar-collapsed";
 
 type SidebarLabelKey = "dashboard" | "links" | "api" | "logout" | "collapse" | "expand";
 
@@ -54,7 +56,7 @@ export function Sidebar() {
   return (
     <aside
       className={cn(
-        "flex flex-col h-screen bg-slate-900 border-r border-slate-800 transition-all duration-300",
+        "sticky top-0 h-screen flex flex-col bg-slate-900 border-r border-slate-800 transition-all duration-300",
         collapsed ? "w-[60px]" : "w-[220px]"
       )}
     >
