@@ -134,6 +134,9 @@ export function LinksTable({ links, loading, trafficData, onViewStats, onShowQr,
                 {t("table.type")}
               </th>
               <th className="px-4 py-3 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                {t("table.clicks")}
+              </th>
+              <th className="px-4 py-3 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                 <div className="flex items-center gap-1">
                   <Flame className="size-3 text-orange-500" />
                   {t("table.traffic")}
@@ -150,7 +153,7 @@ export function LinksTable({ links, loading, trafficData, onViewStats, onShowQr,
           <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
             {paginatedLinks.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-4 py-12 text-center text-slate-500 dark:text-slate-400">
+                <td colSpan={7} className="px-4 py-12 text-center text-slate-500 dark:text-slate-400">
                   {t("table.empty")}
                 </td>
               </tr>
@@ -196,8 +199,11 @@ export function LinksTable({ links, loading, trafficData, onViewStats, onShowQr,
                     <LinkTypeBadge type={getLinkType(link)} t={t} />
                   </td>
                   <td className="px-4 py-3 text-sm text-slate-600 dark:text-slate-400">
+                    {link.clicks || 0}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-slate-600 dark:text-slate-400">
                     <span className="font-medium text-orange-500 dark:text-orange-400">
-                      {trafficData?.get(link.code) ?? link.clicks ?? 0}
+                      {trafficData?.get(link.code) ?? 0}
                     </span>
                   </td>
                   <td className="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">
