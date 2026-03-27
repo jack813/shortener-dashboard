@@ -80,6 +80,28 @@
     "noLinks": "No links created yet. Click \"Create Link\" to add your first short link.",
     "loading": "Loading...",
     "search": "Search...",
+    "wizard": {
+      "step1Title": "Basic Info",
+      "step2Title": "Rules Configuration",
+      "step3Title": "Preview",
+      "enableSplitRules": "Enable traffic distribution",
+      "addRule": "Add Rule",
+      "removeRule": "Remove Rule",
+      "ruleName": "Rule Name",
+      "priority": "Priority",
+      "targetUrl": "Target URL",
+      "active": "Active",
+      "addCondition": "Add Condition",
+      "removeCondition": "Remove Condition",
+      "dimension": "Dimension",
+      "operator": "Operator",
+      "value": "Value",
+      "back": "Back",
+      "next": "Next",
+      "create": "Create Link",
+      "previewTitle": "Preview",
+      "rulesSummary": "{{count}} rules configured"
+    },
     "filter": {
       "allTypes": "All Types",
       "custom": "Custom",
@@ -125,7 +147,12 @@
       "recentLogs": "Recent Activity",
       "loadFailed": "Failed to load statistics",
       "networkError": "Network error",
-      "noData": "No data available"
+      "noData": "No data available",
+      "totalVisits": "Total Visits",
+      "rulesMatched": "Rules Matched",
+      "defaultRedirect": "Default Redirect",
+      "rulesDistribution": "Rules Distribution",
+      "viewDetails": "View Details"
     },
     "qr": {
       "title": "QR Code",
