@@ -153,7 +153,21 @@
       "rulesMatched": "规则命中",
       "defaultRedirect": "默认跳转",
       "rulesDistribution": "规则分布",
-      "viewDetails": "查看详情"
+      "viewDetails": "查看详情",
+      "detail": {
+        "title": "统计详情",
+        "shortLink": "短链接",
+        "tabs": {
+          "overview": "概览",
+          "rules": "规则",
+          "geo": "地理分布",
+          "device": "设备",
+          "logs": "访问日志"
+        },
+        "backToLinks": "返回链接列表",
+        "loading": "加载统计数据...",
+        "error": "加载统计数据失败"
+      }
     },
     "qr": {
       "title": "二维码",
