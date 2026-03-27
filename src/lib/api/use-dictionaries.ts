@@ -45,7 +45,7 @@ export function useDictionaries() {
     loadDictionaries();
   }, [loadDictionaries]);
 
-  const loadCities = useCallback(async (countryCode: string) => {
+  const loadCities = useCallback(async (countryCode: string): Promise<boolean> => {
     try {
       const token = getSessionToken();
       const result = await get<{ cities: DictionaryItem[] }>(
@@ -53,8 +53,10 @@ export function useDictionaries() {
         token || undefined
       );
       setCities(result.cities || []);
+      return true;
     } catch (err) {
       console.error("Failed to load cities:", err);
+      return false;
     }
   }, []);
 
