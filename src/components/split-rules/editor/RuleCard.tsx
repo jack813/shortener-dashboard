@@ -159,7 +159,7 @@ export function RuleCard({
           <div className="space-y-2">
             {rule.conditions.length === 0 ? (
               <p className="text-sm text-muted-foreground italic">
-                No conditions configured. This rule will always match.
+                {t("noConditions")}
               </p>
             ) : (
               rule.conditions.map((condition, index) => (

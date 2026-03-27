@@ -100,7 +100,8 @@
       "next": "下一步",
       "create": "创建链接",
       "previewTitle": "预览",
-      "rulesSummary": "已配置 {{count}} 条规则"
+      "rulesSummary": "已配置 {{count}} 条规则",
+      "noConditions": "未配置条件。此规则将始终匹配。"
     },
     "filter": {
       "allTypes": "全部类型",

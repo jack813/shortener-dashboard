@@ -100,7 +100,8 @@
       "next": "Next",
       "create": "Create Link",
       "previewTitle": "Preview",
-      "rulesSummary": "{{count}} rules configured"
+      "rulesSummary": "{{count}} rules configured",
+      "noConditions": "No conditions configured. This rule will always match."
     },
     "filter": {
       "allTypes": "All Types",
