@@ -903,8 +903,8 @@ export default function APIPage() {
   const t = useTranslations("API");
   const [showKey, setShowKey] = useState(false);
 
-  // Demo API key
-  const apiKey = "sk_test_placeholder";
+  // Demo API key (placeholder)
+  const apiKey = "sk_test_your_api_key_here";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(apiKey);
