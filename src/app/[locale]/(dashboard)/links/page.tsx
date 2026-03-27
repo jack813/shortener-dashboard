@@ -6,7 +6,7 @@ import { Plus } from "lucide-react";
 import { useLinks, Link, CreateLinkResponse } from "@/lib/api/use-links";
 import { useTrafficLinks } from "@/lib/api/use-traffic";
 import { LinksTable } from "@/components/links/links-table";
-import { CreateLinkDialog } from "@/components/links/create-link-dialog";
+import { CreateLinkWizard } from "@/components/split-rules/CreateLinkWizard";
 import { EditLinkDialog } from "@/components/links/edit-link-dialog";
 import { StatsDialog } from "@/components/links/stats-dialog";
 import { QrDialog } from "@/components/links/qr-dialog";
@@ -48,6 +48,18 @@ export default function LinksPage() {
       custom?: string;
       expire_days?: number;
       permanent?: boolean;
+      split_rules?: Array<{
+        id: string;
+        name: string;
+        priority: number;
+        targetUrl: string;
+        isActive: boolean;
+        conditions: Array<{
+          dimension: string;
+          operator: string;
+          value: string | string[] | number;
+        }>;
+      }>;
     }): Promise<CreateLinkResponse | null> => {
       try {
         const result = await createLink(data);
@@ -135,7 +147,7 @@ export default function LinksPage() {
       />
 
       {/* Dialogs */}
-      <CreateLinkDialog
+      <CreateLinkWizard
         open={createOpen}
         onOpenChange={setCreateOpen}
         onSubmit={handleCreate}
