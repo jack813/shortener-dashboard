@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   Dialog,
   DialogContent,
@@ -9,6 +10,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { get } from "@/lib/api/fetcher";
+import { RulesDistribution } from "@/components/split-rules/stats/RulesDistribution";
+import type { RuleStats } from "@/lib/types/split-rules";
 
 interface StatsData {
   total: number;
@@ -27,6 +30,9 @@ interface StatsData {
     timestamp: string;
     user_agent: string;
   }>;
+  rules?: RuleStats[];
+  no_rule_matched?: number;
+  no_rule_percentage?: number;
 }
 
 interface StatsDialogProps {
@@ -113,6 +119,26 @@ export function StatsDialog({ open, onOpenChange, code }: StatsDialogProps) {
                 {t("stats.totalClicks")}
               </div>
             </div>
+
+            {/* Rules Distribution */}
+            {stats.rules && stats.rules.length > 0 && (
+              <div>
+                <RulesDistribution
+                  rules={stats.rules}
+                  noRuleMatched={stats.no_rule_matched || 0}
+                  noRulePercentage={stats.no_rule_percentage || 0}
+                />
+                {/* View Details Link */}
+                <div className="mt-3 text-right">
+                  <Link
+                    href={`/${code}/stats`}
+                    className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    {t("stats.viewDetails")} →
+                  </Link>
+                </div>
+              </div>
+            )}
 
             {/* Countries */}
             {stats.geography?.countries && stats.geography.countries.length > 0 && (
