@@ -62,7 +62,7 @@ export function RulesDistribution({
             <div
               className="h-full bg-slate-300 dark:bg-slate-600"
               style={{ width: `${noRulePercentage}%` }}
-              title={`No rule matched: ${noRuleMatched} (${noRulePercentage.toFixed(1)}%)`}
+              title={`${t("defaultRedirect")}: ${noRuleMatched} (${noRulePercentage.toFixed(1)}%)`}
             />
           )}
         </div>
