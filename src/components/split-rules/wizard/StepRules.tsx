@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useRef } from "react";
 import {
   DndContext,
   closestCenter,
@@ -83,9 +84,6 @@ function SortableRuleCard({
   );
 }
 
-let ruleIdCounter = 0;
-const generateRuleId = () => `rule-${Date.now()}-${++ruleIdCounter}`;
-
 export function StepRules({
   rules,
   onRulesChange,
@@ -95,6 +93,9 @@ export function StepRules({
   disabled = false,
 }: StepRulesProps) {
   const t = useTranslations("Links.wizard");
+  const ruleIdCounter = useRef(0);
+
+  const generateRuleId = () => `rule-${Date.now()}-${++ruleIdCounter.current}`;
 
   const sensors = useSensors(
     useSensor(PointerSensor),
