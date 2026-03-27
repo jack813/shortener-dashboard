@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { ExternalLink } from "lucide-react";
+import { Label } from "@/components/ui/label";
 import type { SplitRule } from "@/lib/types/split-rules";
 
 interface StepPreviewProps {
@@ -91,8 +92,4 @@ export function StepPreview({
       )}
     </div>
   );
-}
-
-function Label({ className, children }: { className?: string; children: React.ReactNode }) {
-  return <label className={className}>{children}</label>;
 }
