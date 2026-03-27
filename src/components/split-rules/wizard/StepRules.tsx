@@ -69,7 +69,7 @@ function SortableRuleCard({
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+    <div ref={setNodeRef} style={style} {...attributes}>
       <RuleCard
         rule={rule}
         onChange={onChange}
@@ -79,6 +79,7 @@ function SortableRuleCard({
         onLoadCities={onLoadCities}
         disabled={disabled}
         isDragging={isDragging}
+        dragListeners={listeners}
       />
     </div>
   );

@@ -42,6 +42,7 @@ interface RuleCardProps {
   onLoadCities?: (countryCode: string) => Promise<boolean>;
   disabled?: boolean;
   isDragging?: boolean;
+  dragListeners?: Record<string, unknown>;
 }
 
 export function RuleCard({
@@ -53,6 +54,7 @@ export function RuleCard({
   onLoadCities,
   disabled = false,
   isDragging,
+  dragListeners,
 }: RuleCardProps) {
   const t = useTranslations("Links.wizard");
   const [isExpanded, setIsExpanded] = useState(true);
@@ -99,8 +101,11 @@ export function RuleCard({
     >
       {/* Header */}
       <div className="flex items-center gap-2 p-3 border-b">
-        {/* Drag Handle (placeholder) */}
-        <div className="cursor-grab text-muted-foreground hover:text-foreground">
+        {/* Drag Handle */}
+        <div
+          className="cursor-grab text-muted-foreground hover:text-foreground"
+          {...dragListeners}
+        >
           <GripVertical className="h-4 w-4" />
         </div>
 
