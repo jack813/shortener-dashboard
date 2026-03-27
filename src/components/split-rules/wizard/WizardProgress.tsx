@@ -11,11 +11,13 @@ interface WizardProgressProps {
 export function WizardProgress({ currentStep, totalSteps }: WizardProgressProps) {
   const t = useTranslations("Links.wizard");
 
-  const steps = [
+  const allSteps = [
     { key: "step1Title", label: t("step1Title") },
     { key: "step2Title", label: t("step2Title") },
     { key: "step3Title", label: t("step3Title") },
   ];
+
+  const steps = allSteps.slice(0, totalSteps);
 
   return (
     <div className="flex items-center justify-center gap-2 mb-6">
