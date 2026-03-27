@@ -35,29 +35,29 @@ const RULE_COLORS = [
 
 interface RuleCardProps {
   rule: SplitRule;
-  ruleIndex: number;
   onChange: (rule: SplitRule) => void;
   onRemove: () => void;
   dimensions: DimensionDefinition[];
   getDictionaryItems: (dimension: Dimension) => DictionaryItem[];
   onLoadCities?: (countryCode: string) => Promise<boolean>;
   disabled?: boolean;
+  isDragging?: boolean;
 }
 
 export function RuleCard({
   rule,
-  ruleIndex,
   onChange,
   onRemove,
   dimensions,
   getDictionaryItems,
   onLoadCities,
   disabled = false,
+  isDragging,
 }: RuleCardProps) {
   const t = useTranslations("Links.wizard");
   const [isExpanded, setIsExpanded] = useState(true);
 
-  const borderColor = RULE_COLORS[ruleIndex % RULE_COLORS.length];
+  const borderColor = RULE_COLORS[parseInt(rule.id.replace(/\D/g, "")) % RULE_COLORS.length];
 
   const handleNameChange = (name: string) => {
     onChange({ ...rule, name });
@@ -95,7 +95,7 @@ export function RuleCard({
     <div
       className={`rounded-lg border border-l-4 bg-card shadow-sm transition-all ${
         !rule.isActive ? "opacity-60" : ""
-      } ${borderColor}`}
+      } ${borderColor} ${isDragging ? "shadow-lg" : ""}`}
     >
       {/* Header */}
       <div className="flex items-center gap-2 p-3 border-b">
