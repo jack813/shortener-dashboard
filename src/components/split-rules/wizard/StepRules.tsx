@@ -112,7 +112,7 @@ export function StepRules({
 
       const newRules = arrayMove(rules, oldIndex, newIndex).map((rule, index) => ({
         ...rule,
-        priority: index + 1,
+        priority: (index + 1) * 100,
       }));
 
       onRulesChange(newRules);
@@ -123,7 +123,7 @@ export function StepRules({
     const newRule: SplitRule = {
       id: generateRuleId(),
       name: `${t("ruleName")} ${rules.length + 1}`,
-      priority: rules.length + 1,
+      priority: (rules.length + 1) * 100,
       targetUrl: "",
       isActive: true,
       conditions: [],
@@ -141,7 +141,7 @@ export function StepRules({
       .filter((rule) => rule.id !== id)
       .map((rule, index) => ({
         ...rule,
-        priority: index + 1,
+        priority: (index + 1) * 100,
       }));
 
     onRulesChange(newRules);
