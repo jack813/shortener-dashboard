@@ -13,10 +13,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import type {
-  Dimension,
   Operator,
   DimensionDefinition,
-  Condition,
 } from "@/lib/types/split-rules";
 import type { DictionaryItem } from "@/lib/api/use-dictionaries";
 
@@ -60,7 +58,7 @@ export function ValueInput({
     );
   }
 
-  const { valueType, dictionary } = dimension;
+  const { valueType } = dimension;
 
   // Handle multi-select for "in" and "not_in" operators
   if (operator === "in" || operator === "not_in") {
@@ -154,7 +152,11 @@ export function ValueInput({
     return (
       <Select
         value={typeof value === "string" ? value : ""}
-        onValueChange={(v) => v && onChange(v)}
+        onValueChange={(v) => {
+          if (v) {
+            onChange(v as string);
+          }
+        }}
         disabled={disabled}
       >
         <SelectTrigger className="w-full min-w-[150px]">
