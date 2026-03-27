@@ -242,7 +242,7 @@ export function CreateLinkWizard({
               permanent={permanent}
               onPermanentChange={setPermanent}
               enableSplitRules={enableSplitRules}
-              onEnableSplitRulesChange={(enable) => {
+              onEnableSplitRulesChange={(enable: boolean) => {
                 setEnableSplitRules(enable);
                 if (!enable) {
                   setRules([]);

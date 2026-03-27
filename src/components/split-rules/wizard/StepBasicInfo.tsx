@@ -77,7 +77,7 @@ export function StepBasicInfo({
         <Label htmlFor="expireDays">{t("form.expireDays")}</Label>
         <Select
           value={String(expireDays)}
-          onValueChange={(value) => onExpireDaysChange(parseInt(value || "30"))}
+          onValueChange={(value) => onExpireDaysChange(parseInt(value ?? "30"))}
           disabled={permanent}
         >
           <SelectTrigger id="expireDays" className="w-full">
